@@ -60,6 +60,7 @@ function compareClickCounter(ClickCounterArray) {
     return true
 }
 
+/*
 function sleep(milliseconds) {
     // pause 기능
     var start = new Date().getTime()
@@ -67,6 +68,7 @@ function sleep(milliseconds) {
         if ((new Date().getTime() - start) > milliseconds) { break }
     }
 }
+*/
 
 // ==================================================================================
 /* Room Creator */
@@ -467,10 +469,16 @@ room3.ironDoor.onClick = function () {
             playSound("unlock.wav")
             room3.ironDoor.unlock()
             room3.ironDoor.open()
+
         }
     }
     else {
-        if (room3.ironDoor.isOpened()) game.clear()
+        if (room3.ironDoor.isOpened()) {
+            printMessage("이 게임은 1000점 만점 중 몇 점인가요~?")
+            showKeypad("number", "1000", function () {
+                game.clear()             
+            })
+        }
     }
 }
 // ==================================================================================
